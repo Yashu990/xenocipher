@@ -1,31 +1,23 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => (
-  <div className="bg-gradient-to-bl from-blue-950 to-gray-700 rounded-3xl  border border-gray-600 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden group">
-    <div className="p-6">
-      {/* Image with blur background */}
-      <div className="relative mb-6">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-300/20 to-blue-950/20 rounded-2xl blur-xl"></div>
+  <div className="bg-gradient-to-bl from-blue-950 to-gray-700 rounded-3xl overflow-hidden shadow-md hover:shadow-lg transition">
+    <div className="p-4">
+      <div className="relative">
         <img
-          className="relative w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-64 object-cover rounded-2xl"
           src={product.image}
-          alt={product.alt}
+          alt={product.alt || product.name}
+          onError={(e) => (e.target.src = "/fallback-image.png")} // fallback if image fails
         />
       </div>
-
-      {/* Product info */}
-      <h3 className="text-xl font-bold mb-3 text-white">{product.name}</h3>
-      <p className="text-gray-300 mb-6">Advanced walk-through detector with multi-zone targeting</p>
-
-      {/* Link */}
-      <a
-        href={product.link}
-        className="text-blue-400 hover:text-white transition-colors duration-300 flex items-center"
+      <h3 className="text-xl font-bold mt-4 text-white">{product.name}</h3>
+      <Link
+        to={product.link}
+        className="text-blue-400 hover:text-white transition flex items-center mt-2"
       >
-        View Details <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-      </a>
+        View Details →
+      </Link>
     </div>
   </div>
 );

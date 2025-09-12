@@ -2,8 +2,8 @@ import React from 'react';
 
 const HeroSection = () => (
   <section className="pt-32 pb-24 bg-blue-950 relative overflow-hidden">
-    <div className="container mx-auto px-6 bg-blue-950  relative">
-      <nav className="text-sm text-gray-400  mb-8">
+    <div className="container mx-auto px-6   relative">
+      <nav className="text-sm text-gray-400 bg-blue-950 mb-8">
         <span className="hover:text-neonBlue cursor-pointer">Products</span>
         <span className="mx-2">/</span>
         <span className="text-neonBlue">Door Frame Metal Detectors</span>

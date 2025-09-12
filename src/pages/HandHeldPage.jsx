@@ -1,9 +1,11 @@
+// pages/HandHeldPage.jsx
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faHeadset, faFileInvoice, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import xeno from "../assets/xeno.svg";
+import { metals } from "../data/Metals"; // ✅ Import metals data
 
 const HandHeldPage = () => {
   return (
@@ -83,62 +85,30 @@ const HandHeldPage = () => {
       <section id="product-grid" className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-gradient-to-b from-gray-800 to-gray-700 rounded-3xl border border-blue-500/30 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden group">
-              <div className="p-6">
-                <div className="relative mb-6">
-                  <img className="relative w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                    src="https://storage.googleapis.com/uxpilot-auth.appspot.com/da18c3483d-835c7d31c91403cc815d.png"
-                    alt="modern handheld metal detector"
-                  />
+            {metals.map((metal) => (
+              <div
+                key={metal.id}
+                className="bg-gradient-to-b from-gray-800 to-gray-700 rounded-3xl border border-blue-500/30 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden group"
+              >
+                <div className="p-6">
+                  <div className="relative mb-6">
+                    <img
+                      className="relative w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                      src={metal.image}
+                      alt={metal.name}
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{metal.name}</h3>
+                  <p className="text-gray-300 mb-6">{metal.description}</p>
+                  <Link
+                    to={`/metals/${metal.id}`} // ✅ Dynamic link
+                    className="text-blue-400 hover:text-white transition-colors duration-300 flex items-center cursor-pointer"
+                  >
+                    View Details <FontAwesomeIcon icon={faArrowRight} className="ml-2 " />
+                  </Link>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Super High Sensitive HHMD</h3>
-                <p className="text-gray-300 mb-6">
-                  Advanced portable detector for security scanning with enhanced sensitivity
-                </p>
-                <Link to="/handheld" className="text-blue-400 hover:text-white transition-colors duration-300 flex items-center">
-                  View Details <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                </Link>
               </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-gradient-to-b from-gray-800 to-gray-700 rounded-3xl border border-blue-500/30 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden group">
-              <div className="p-6">
-                <div className="relative mb-6">
-                  <img className="relative w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                    src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ac26e3f62c-ccfc525e6952d98d67ac.png"
-                    alt="professional handheld metal detector"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-3">Low Power Pro HHMD</h3>
-                <p className="text-gray-300 mb-6">
-                  Self-adjusting detector with dual alarm and extended battery life
-                </p>
-                <Link to="/handheld" className="text-blue-400 hover:text-white transition-colors duration-300 flex items-center">
-                  View Details <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-gradient-to-b from-gray-800 to-gray-700 rounded-3xl border border-blue-500/30 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden group">
-              <div className="p-6">
-                <div className="relative mb-6">
-                  <img className="relative w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                    src="https://storage.googleapis.com/uxpilot-auth.appspot.com/61a9489599-b15df9c8375b6780f4e3.png"
-                    alt="rugged handheld metal detector"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-3">Dual-Alarm HHMD</h3>
-                <p className="text-gray-300 mb-6">
-                  Rugged design with audio and vibration alert system
-                </p>
-                <Link to="/handheld" className="text-blue-400 hover:text-white transition-colors duration-300 flex items-center">
-                  View Details <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

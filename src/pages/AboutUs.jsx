@@ -1,9 +1,11 @@
 import React from "react";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 const AboutUs = () => {
   return (
     <div className="bg-blue-950 text-white font-sans">
+      <Header/>
       {/* Hero Section */}
       <section className="relative py-32 text-center bg-gradient-to-b from-darkBg to-darkBg/70">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-600/10"></div>

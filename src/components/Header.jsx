@@ -10,7 +10,7 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="h-20 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3" aria-label="Xenocipher home">
+          <a href="http://localhost:5173/" className="flex items-center gap-3" aria-label="Xenocipher home">
             <img src={xeno} alt="Xenocipher Logo" className="h-10 w-auto" />
           </a>
            
