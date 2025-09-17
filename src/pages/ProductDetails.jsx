@@ -1,8 +1,8 @@
 // pages/ProductDetails.jsx
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { products } from "../data/products";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header"; // ✅ import your header
+import Footer from "../components/Footer"; // ✅ import your footer
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -10,52 +10,24 @@ const ProductDetails = () => {
     (p) => p.name.toLowerCase() === productId.toLowerCase()
   );
 
-  if (!product) {
-    return (
-      <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center text-center p-6">
-        <h1 className="text-4xl font-bold mb-4">Product Not Found</h1>
-        <p className="text-gray-400 mb-6">
-          The product you're looking for doesn’t exist or has been removed.
-        </p>
-        <Link
-          to="/products"
-          className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:shadow-lg hover:shadow-blue-500/40 transition-all"
-        >
-          ← Back to Products
-        </Link>
-      </div>
-    );
-  }
+  if (!product) return <div className="p-6 text-white">Product Not Found</div>;
 
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col">
       {/* ✅ Header */}
       <Header />
 
-      {/* ✅ Breadcrumb Navigation */}
-      <div className="bg-gray-800 text-gray-400 text-sm px-6 py-3">
-        <Link to="/" className="hover:text-blue-400">
-          Home
-        </Link>{" "}
-        /{" "}
-        <Link to="/products" className="hover:text-blue-400">
-          Products
-        </Link>{" "}
-        / <span className="text-white">{product.name}</span>
-      </div>
-
       {/* ✅ Main Content */}
       <main className="flex-1 container mx-auto px-6 py-10">
-        <h1 className="text-4xl font-bold mb-10 text-center">{product.name}</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center">{product.name}</h1>
 
-        <div className="flex flex-col md:flex-row items-start gap-12">
+        <div className="flex flex-col md:flex-row items-start gap-10">
           {/* Left - Product Image */}
           <div className="flex-1 flex justify-center">
             <img
               src={product.image}
               alt={product.alt}
-              onError={(e) => (e.target.src = "/fallback-image.png")}
-              className="rounded-3xl shadow-2xl max-w-md transition-transform hover:scale-[1.02] duration-300"
+              className="rounded-xl shadow-xl max-w-md"
             />
           </div>
 
@@ -67,15 +39,15 @@ const ProductDetails = () => {
             </p>
 
             {/* Example - Specs */}
-            <ul className="list-disc pl-6 space-y-3 text-gray-400 mb-8">
+            <ul className="list-disc pl-6 space-y-2 text-gray-400">
               <li>✅ Multi-zone detection</li>
               <li>✅ High sensitivity</li>
               <li>✅ LED indicators</li>
               <li>✅ Easy installation</li>
             </ul>
 
-            {/* CTA Button */}
-            <button className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40 transition-transform">
+            {/* Example - Buy Button */}
+            <button className="mt-6 px-6 py-3 bg-blue-600 rounded-xl hover:bg-blue-500 transition">
               Contact Us
             </button>
           </div>
